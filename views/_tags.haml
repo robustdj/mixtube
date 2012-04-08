@@ -1,3 +1,3 @@
 - tags.each do |tag|
-  %a{:href => tag['key']}
+  %a.tag{:href => tag_path(tag['key'])}
     %span.label.label-important= tag["name"]

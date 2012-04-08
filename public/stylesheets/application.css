@@ -157,6 +157,8 @@ h3 {
           height: 140px; }
       #favorites .favorite .inner .meta {
         width: 290px; }
+        #favorites .favorite .inner .meta .tag:hover {
+          text-decoration: none; }
         #favorites .favorite .inner .meta h4 {
           display: inline-block; }
           #favorites .favorite .inner .meta h4 a {

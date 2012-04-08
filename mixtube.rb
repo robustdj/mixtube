@@ -13,6 +13,10 @@ end
 
 helpers do
   # TODO: Put helpers here.
+
+  def tag_path(tag_key)
+    tag_key.gsub("/tag/", "/tags/")[0..-2]
+  end
 end
 
 get '/favorites/:username' do
@@ -35,7 +39,7 @@ get '/new' do
   render_cloudcasts :new
 end
 
-get '/tag/:tag' do
+get '/tags/:tag' do
   render_tag params[:tag]
 end
 

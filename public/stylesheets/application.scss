@@ -221,6 +221,13 @@ h3 {
 
       .meta {
         width: 290px;
+
+        .tag {
+          &:hover {
+            text-decoration: none;
+          }
+        }
+
         h4 {
           display: inline-block;
 
