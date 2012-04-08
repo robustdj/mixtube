@@ -23,9 +23,13 @@ a {
     width: 140px;
     margin: 15px 0; }
     #main .header h1 {
-      color: white;
       font-size: 36px;
       margin: 0; }
+      #main .header h1 a {
+        color: white;
+        text-decoration: none; }
+        #main .header h1 a:hover {
+          color: white; }
   #main .nav {
     float: right;
     width: 240px;
@@ -48,23 +52,47 @@ a {
         font-size: 12px;
         letter-spacing: 1px; }
   #main .window {
+    position: relative;
     width: 940px;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.6);
     clear: left; }
     #main .window .record {
-      overflow: hidden;
       width: 940px;
-      height: 300px; }
-      #main .window .record img {
-        width: 940px;
-        margin-top: -180px; }
-
-#dribbble li {
-  display: inline-block; }
-  #dribbble li img {
-    width: 200px;
-    height: 150px; }
+      height: 300px;
+      background: url(/images/red_record.jpg) no-repeat; }
+      #main .window .record .resultsWpr {
+        width: 912px;
+        height: 235px;
+        padding: 65px 0 0 28px;
+        background-color: rgba(0, 0, 0, 0.6); }
+        #main .window .record .resultsWpr .results .result {
+          display: inline-block;
+          border: 1px solid #333;
+          width: 180px;
+          height: 135px;
+          padding: 10px;
+          background-color: #f9f9f9;
+          margin: 0 10px; }
+          #main .window .record .resultsWpr .results .result img {
+            width: 180px;
+            height: 135px; }
+      #main .window .record a.prev {
+        background: url(/images/left.png) no-repeat transparent;
+        width: 56px;
+        height: 56px;
+        display: block;
+        position: absolute;
+        top: 120px;
+        left: -25px; }
+      #main .window .record a.next {
+        background: url(/images/right.png) no-repeat transparent;
+        width: 56px;
+        height: 56px;
+        display: block;
+        position: absolute;
+        top: 120px;
+        right: -25px; }
 
 .container {
   width: 720px; }
@@ -72,21 +100,16 @@ a {
 h2 {
   color: #5F0505; }
 
-.stripes {
-  width: 100%;
-  background: url(/images/stripes2.png) repeat-x center;
-  height: 10px;
-  margin-top: -2px; }
+h3 {
+  margin-top: 10px;
+  padding: 10px;
+  background: transparent url(/images/h2_long.png) no-repeat scroll left top;
+  line-height: 35px;
+  color: white;
+  margin-left: 18px; }
 
 #favorites {
   width: 980px; }
-  #favorites h3 {
-    margin-top: 10px;
-    padding: 10px;
-    background: transparent url(/images/h2_long.png) no-repeat scroll left top;
-    line-height: 35px;
-    color: white;
-    margin-left: 18px; }
   #favorites .favorite {
     display: inline-block;
     vertical-align: top;
@@ -128,41 +151,27 @@ h2 {
             #favorites .favorite .inner .meta ul li.plays {
               background: url(/images/play.png) no-repeat; }
 
-#results {
-  min-height: 200px;
-  padding-top: 415px; }
-  #results .loader {
-    text-align: center;
-    display: none;
-    margin-top: 100px; }
-  #results .result {
-    width: 210px;
-    display: inline-block; }
-    #results .result h5 {
-      line-height: 1; }
-    #results .result img {
-      width: 200px; }
-    #results .result .video {
-      display: none; }
-
 #cloudcast {
-  position: fixed;
   height: 400px;
-  border-bottom: 1px solid #666;
-  background-color: #efefef; }
+  margin-top: 20px;
+  margin-left: 0; }
   #cloudcast .stream {
     display: inline-block;
     vertical-align: top;
-    width: 300px; }
+    width: 300px;
+    margin-left: 0; }
   #cloudcast .tracklist {
     display: inline-block;
-    width: 410px;
+    height: 300px;
+    width: 638px;
+    overflow-y: scroll;
     vertical-align: top;
-    margin: 15px 40px; }
-    #cloudcast .tracklist li {
+    background-color: #fff; }
+    #cloudcast .tracklist table tr .find {
+      display: none;
+      margin-left: 5px; }
+    #cloudcast .tracklist table tr:hover {
       cursor: pointer; }
-      #cloudcast .tracklist li:hover {
-        color: #0069D6; }
 
 #footer {
   background: transparent url(/images/footer_bg.png) no-repeat scroll center top;

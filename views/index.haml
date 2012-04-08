@@ -13,9 +13,7 @@
             &nbsp;By 
             %a{:class => 'dj', :href => favorite['user']['url']}= favorite['user']['name']
           %p
-            - favorite["tags"].each do |tag|
-              %a{:href => tag["url"]}
-                %span.label.label-important= tag["name"]
+            =haml :"_tags", :layout => false, :locals => { :tags => favorite['tags'] }
           %ul
             %li.listeners{:title => "#{favorite['listener_count']} listeners"}= favorite['listener_count']
             %li.plays{:title => "#{favorite['play_count']} plays"}= favorite['play_count']

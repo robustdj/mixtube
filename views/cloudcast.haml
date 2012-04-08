@@ -1,40 +1,63 @@
 :javascript
   $(document).ready(function(){
-    $('.track').click(function(){
-      var title  = $(this).html(),
+    $('.tracklist table tr').click(function(){
+      var title  = $(this).find('.trackname').html(),
           loader = $('.loader');
 
       $('#results').children('.result').remove();
       loader.show();
       $.getJSON('/query_youtube', {q: title}, function(data){
         loader.hide();
+        $('.record').html('').append('<div class="resultsWpr"><div class="results"></div></div>');
         $.each(data, function(index, result){
-          $.tmpl("<div class='result'><h5>${title}</h5><a href='javascript:;' yt_id='${unique_id}' class='enable'><img src='${image_url}'/></a><div id='${unique_id}' class='video'>{{html embed}}</div></div>", result).appendTo('#results');
+          $.tmpl("<div class='result'><a href='/youtube/${unique_id}' rel='facebox' class='enable'><img src='${image_url}'/></a></div>", result).appendTo('.results');
+        });
+
+        $('<a class="prev" id="results_prev" href="#"></a><a class="next" id="results_next" href="#"></a>').insertAfter('.results');
+
+        $('.results').carouFredSel({
+          circular: false,
+          infinite: false,
+          auto    : false,
+          prev    : {
+            button: "#results_prev",
+            key   : "left"
+          },
+          next    : {
+            button: "#results_next",
+            key   : "right"
+          }
+        });
+
+        $('a[rel*=facebox]').one("mousedown", function() { 
+          $(this).facebox();
         });
       });
+
     });
 
-    $('.enable').live('click',function(){
-      var yt_id = $(this).attr('yt_id');
-      $.facebox({ div: "#" + yt_id });
+    $('.tracklist table tr').bind('mouseover mouseout', function(event) {
+      if (event.type == 'mouseover') {
+        $(this).find('.find').show();
+      } else {
+        $(this).find('.find').hide();
+      }
     });
+    
   });
-#cloudcast
-  %h2=@cloudcast["name"]
-  .stream
-    %span Tags:
-    - @cloudcast["tags"].each do |tag|
-      %a{:href => tag["url"]}
-        =tag["name"]
 
+#cloudcast.row
+  .stream.span3
     =@cloudcast["oembed"]
-  .tracklist
-    %ol
-      -@cloudcast["sections"].each do |section|
-        - if section.has_key? "track"
-          %li.track
-            ="#{section["track"]["artist"]["name"]} &mdash; #{section["track"]["name"]}"
+    =haml :"_tags", :layout => false, :locals => { :tags => @cloudcast['tags'] }
 
-#results
-  .loader
-    %img{:src => '/images/loader.gif'}
+  .tracklist.span8
+    %table.table.table-striped.table-condensed
+      -@cloudcast["sections"].each_with_index do |section, index|
+        - if section.has_key? "track"
+          %tr
+            %td
+              %span.badge.badge-warning= index+1
+            %td.track
+              %span.trackname= "#{section["track"]["artist"]["name"]} &mdash; #{section["track"]["name"]}"
+              %span.label.label-important.find FIND ON YOUTUBE
