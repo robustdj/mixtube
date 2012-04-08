@@ -1,9 +1,28 @@
-## Mixtube
+Mixtube
+=======
 
-Mixtube is a mixcloud.com and youtube.com mashup. On Mixtube, you can browse and listen to
-hot, popular, and your favorite mixcloud cloudcasts, while also finding the individual
-songs on youtube.
+Mixtube is a [Mixcloud](http://mixcloud.com/ "Mixcloud") and
+[Youtube](http://youtube.com/ "Youtube") mashup built on sinatra. On Mixtube, you can
+browse and listen to hot, popular, and your favorite mixcloud cloudcasts, while also
+finding the individual songs on youtube.
 
-## License
+Development
+-----------
+
+You'll need to register an app at http://www.mixcloud.com/developers so that you can obtain
+an API key. You'll also need a youtube api key.
+
+Copy the `.env.example` to `.env` and enter your api keys. Then you can just run:
+
+    bundle install
+
+then:
+
+    foreman start
+
+It runs on http://localhost:5000 by default.
+
+License
+-------
 
 Everything is in the public domain unless otherwise specified.
