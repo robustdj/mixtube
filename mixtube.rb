@@ -20,7 +20,6 @@ get '/favorites/:username' do
 end
 
 get '/favorites' do
-  puts "ENV['MIXCLOUD_DEFAULT_USERNAME']=#{ENV["MIXCLOUD_DEFAULT_USERNAME"]}"
   render_favorites ENV["MIXCLOUD_DEFAULT_USERNAME"]
 end
 
@@ -47,7 +46,7 @@ get '/mixtube_callback' do
 end
 
 get '/' do
-  redirect "/favorites?username=derrickcamerino"
+  render_favorites ENV["MIXCLOUD_DEFAULT_USERNAME"]
 end
 
 get '/*' do
