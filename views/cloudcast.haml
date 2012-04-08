@@ -4,15 +4,16 @@
       var title  = $(this).find('.trackname').html(),
           loader = $('.loader');
 
-      $('#results').children('.result').remove();
       loader.show();
       $.getJSON('/query_youtube', {q: title}, function(data){
         loader.hide();
-        $('.record').html('').append('<div class="resultsWpr"><div class="results"></div></div>');
-        $.each(data, function(index, result){
-          $.tmpl("<div class='result'><a href='/youtube/${unique_id}' rel='facebox' class='enable'><img src='${image_url}'/></a></div>", result).appendTo('.results');
+        $('.record').html('').append('<div class="resultsWpr"><h2 class="resultHeader"></h2><div class="results"></div></div>');
+        $.each(data.videos, function(index, result){
+          $.tmpl("<div class='result'><a href='/youtube/${unique_id}' rel='facebox' class='enable' title='${title}'><img src='${image_url}'/></a></div>", result).appendTo('.results');
         });
 
+        $('<div class="query"><span>Youtube Search Results For: <code>'+data.query+'</code></span></div>').insertAfter('.results');
+        $('<div class="pagination" id="results_pag"></div>').insertAfter('.results');
         $('<a class="prev" id="results_prev" href="#"></a><a class="next" id="results_next" href="#"></a>').insertAfter('.results');
 
         $('.results').carouFredSel({
@@ -26,6 +27,15 @@
           next    : {
             button: "#results_next",
             key   : "right"
+          },
+          pagination: '#results_pag'
+        });
+
+        $('.result').bind('mouseover mouseout', function(event) {
+          if (event.type == 'mouseover') {
+            $('h2.resultHeader').html($(this).find('a').attr('title'));
+          } else {
+            $('h2.resultHeader').html('');
           }
         });
 

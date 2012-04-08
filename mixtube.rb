@@ -33,7 +33,11 @@ get '/query_youtube' do
   client = YouTubeIt::Client.new(:dev_key => ENV['YOUTUBE_KEY'])
   @videos = client.videos_by(:query => params[:q]).videos
   content_type :json
-  @videos.map{|video| {:image_url => video.thumbnails[1].url, :embed => video.embed_html, :title => video.title, :unique_id => video.unique_id}}.to_json
+
+  {
+    :query => params[:q],
+    :videos => @videos.map{|video| {:image_url => video.thumbnails[1].url, :title => CGI::escapeHTML(video.title), :unique_id => video.unique_id}}
+  }.to_json
 end
 
 get '/youtube/:yt_id' do

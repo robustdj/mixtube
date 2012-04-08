@@ -94,6 +94,16 @@ a {
         padding: 65px 0 0 28px;
         background-color: rgba(0, 0, 0, 0.6);
 
+        h2 {
+          position: absolute;
+          top: 25px;
+          background-color: rgba(0, 0, 0, 0.6);
+          left: 10px;
+          padding: 0 35px;
+          color: $yellow;
+          font-weight: normal;
+        }
+
         .results {
           .result {
             display: inline-block;
@@ -129,6 +139,41 @@ a {
         position: absolute;
         top: 120px;
         right: -25px;
+      }
+
+      .pagination {
+        float: right;
+        text-align: right;
+        width: 250px;
+        margin: 15px 30px 0 0;
+      }
+
+      .pagination a {
+        background: url(/images/gray_ball.png) 0 0 no-repeat transparent;
+        height: 16px;
+        display: inline-block;
+        border: none;
+        float: none;
+        padding: 0 10px;
+      }
+      .pagination a.selected {
+        background: url(/images/red_ball.png) 0 0 no-repeat transparent;
+        cursor: default;
+      }
+
+      .pagination a span {
+        display: none;
+      }
+
+      .query {
+        float: right;
+        width: 615px;
+        margin: 20px 0;
+        color: white;
+
+        span {
+          margin-left: -8px;
+        }
       }
     }
   }
