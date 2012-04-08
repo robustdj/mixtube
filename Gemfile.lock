@@ -1,0 +1,76 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    archive-tar-minitar (0.5.2)
+    awesome_print (0.4.0)
+    builder (3.0.0)
+    columnize (0.3.2)
+    diff-lcs (1.1.2)
+    foreman (0.41.0)
+      thor (>= 0.13.6)
+    haml (3.1.2)
+    heroku (2.8.1)
+      launchy (>= 0.3.2)
+      rest-client (~> 1.6.1)
+      rubyzip
+      term-ansicolor (~> 1.0.5)
+    launchy (2.0.3)
+    linecache19 (0.5.12)
+      ruby_core_source (>= 0.1.4)
+    mime-types (1.16)
+    oauth (0.4.5)
+    rack (1.2.2)
+    rack-flash (0.1.1)
+      rack
+    rack-test (0.5.7)
+      rack (>= 1.0)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    rspec (2.5.0)
+      rspec-core (~> 2.5.0)
+      rspec-expectations (~> 2.5.0)
+      rspec-mocks (~> 2.5.0)
+    rspec-core (2.5.1)
+    rspec-expectations (2.5.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.5.0)
+    ruby-debug-base19 (0.11.25)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
+    ruby_core_source (0.1.5)
+      archive-tar-minitar (>= 0.5.2)
+    rubyzip (0.9.4)
+    sass (3.1.7)
+    shotgun (0.9)
+      rack (>= 1.0)
+    sinatra (1.2.1)
+      rack (~> 1.1)
+      tilt (>= 1.2.2, < 2.0)
+    term-ansicolor (1.0.6)
+    thor (0.14.6)
+    tilt (1.2.2)
+    youtube_it (1.4.3)
+      builder
+      oauth (>= 0.4.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  awesome_print
+  foreman
+  haml
+  heroku
+  rack-flash
+  rack-test
+  rspec
+  ruby-debug19
+  sass
+  shotgun
+  sinatra
+  youtube_it

@@ -1,0 +1,9 @@
+%h2 Sandbox
+%img{:src => 'bull.jpg'}
+
+#dribbble
+  %h3 Dribbble
+  %ul
+    - @shots.each do |shot|
+      %li
+        %img{:src => shot.image_url}

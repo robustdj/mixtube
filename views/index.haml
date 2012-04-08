@@ -1,0 +1,24 @@
+#favorites.row
+  %h3="#{@name} on mixcloud"
+  %br
+  - @favorites.each do |favorite|
+    .favorite.span6
+      .inner.row
+        .span2.image
+          %a{:href => "/cloudcast?key=#{favorite['key']}"}
+            %img{:class => 'avatar', :src => favorite["pictures"]["large"]}
+        .span4.meta
+          %h4
+            %a{:href => "/cloudcast?key=#{favorite['key']}"}=favorite["name"]
+            &nbsp;By 
+            %a{:class => 'dj', :href => favorite['user']['url']}= favorite['user']['name']
+          %p
+            - favorite["tags"].each do |tag|
+              %a{:href => tag["url"]}
+                %span.label.label-important= tag["name"]
+          %ul
+            %li.listeners{:title => "#{favorite['listener_count']} listeners"}= favorite['listener_count']
+            %li.plays{:title => "#{favorite['play_count']} plays"}= favorite['play_count']
+            %li.comments{:title => "#{favorite['comment_count']} comments"}= favorite['comment_count']
+            %li.favorites{:title => "#{favorite['favorite_count']} favoriters"}= favorite['favorite_count']
+            %li.length{:title => "#{(favorite['audio_length']/60.0).round(1)} minutes"}= "#{(favorite['audio_length']/60.0).round(1)}m"

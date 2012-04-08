@@ -1,0 +1,46 @@
+!!!
+
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %title Mixtube
+
+    %link{:rel=>"shortcut icon", :href => "icon.png"}
+    %link{:rel=>"stylesheet", :href => "/stylesheets/style.css"}
+    %link{:rel=>"stylesheet", :href => "/stylesheets/bootstrap.css"}
+    %link{:rel=>"stylesheet", :href => "/stylesheets/prettify.css"}
+    %link{:rel=>"stylesheet", :href => "/stylesheets/facebox.css"}
+    %link{:rel=>"stylesheet", :href => "/stylesheets/application.css"}
+
+    %script{:src=>"javascripts/jquery.js"}
+    %script{:src=>"javascripts/jquery.tablesorter.min.js"}
+    %script{:src=>"javascripts/jquery.tmpl.js"}
+    %script{:src=>"javascripts/facebox.js"}
+    %script{:src=>"javascripts/application.js"}
+    %script{:src=>"javascripts/prettify.js"}
+    %script{:src=>"javascripts/script.js"}
+    :javascript
+      $.facebox.settings.closeImage = '/images/closelabel.png'
+      $.facebox.settings.loadingImage = '/images/loading.gif'
+
+  %body
+    #page_wrapper
+      - if flash[:notice]
+        .flash= flash[:notice]
+      #main
+        .header
+          %h1 Mixtube 
+        %ul.nav
+          %li
+            %a{:href => '#'} HOT
+          %li
+            %a{:href => '#'} POPULAR
+          %li.current
+            %a{:href => '#'} FAVORITES
+        .window
+          .record
+            %img{:src => '/images/red_record.jpg'}
+        = yield
+      #footer
+        .inner
+          .container
