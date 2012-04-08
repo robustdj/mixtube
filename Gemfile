@@ -7,6 +7,7 @@ gem 'rack-flash'
 gem 'haml'
 gem 'sass'
 gem 'youtube_it'
+gem 'thin'
 
 group :development do
   gem 'ruby-debug19'
