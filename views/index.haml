@@ -1,22 +1,22 @@
 #favorites.row
   %h3="#{@name} on mixcloud"
   %br
-  - @favorites.each do |favorite|
+  - @cloudcasts.each do |cloudcast|
     .favorite.span6
       .inner.row
         .span2.image
-          %a{:href => "/cloudcast?key=#{favorite['key']}"}
-            %img{:class => 'avatar', :src => favorite["pictures"]["large"]}
+          %a{:href => "/cloudcast?key=#{cloudcast['key']}"}
+            %img{:class => 'avatar', :src => cloudcast["pictures"]["large"]}
         .span4.meta
           %h4
-            %a{:href => "/cloudcast?key=#{favorite['key']}"}=favorite["name"]
+            %a{:href => "/cloudcast?key=#{cloudcast['key']}"}=cloudcast["name"]
             &nbsp;By 
-            %a{:class => 'dj', :href => favorite['user']['url']}= favorite['user']['name']
+            %a{:class => 'dj', :href => cloudcast['user']['url']}= cloudcast['user']['name']
           %p
-            =haml :"_tags", :layout => false, :locals => { :tags => favorite['tags'] }
+            =haml :"_tags", :layout => false, :locals => { :tags => cloudcast['tags'] }
           %ul
-            %li.listeners{:title => "#{favorite['listener_count']} listeners"}= favorite['listener_count']
-            %li.plays{:title => "#{favorite['play_count']} plays"}= favorite['play_count']
-            %li.comments{:title => "#{favorite['comment_count']} comments"}= favorite['comment_count']
-            %li.favorites{:title => "#{favorite['favorite_count']} favoriters"}= favorite['favorite_count']
-            %li.length{:title => "#{(favorite['audio_length']/60.0).round(1)} minutes"}= "#{(favorite['audio_length']/60.0).round(1)}m"
+            %li.listeners{:title => "#{cloudcast['listener_count']} listeners"}= cloudcast['listener_count']
+            %li.plays{:title => "#{cloudcast['play_count']} plays"}= cloudcast['play_count']
+            %li.comments{:title => "#{cloudcast['comment_count']} comments"}= cloudcast['comment_count']
+            %li.favorites{:title => "#{cloudcast['favorite_count']} favoriters"}= cloudcast['favorite_count']
+            %li.length{:title => "#{(cloudcast['audio_length'].to_i/60.0).round(1)} minutes"}= "#{(cloudcast['audio_length'].to_i/60.0).round(1)}m"

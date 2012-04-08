@@ -23,6 +23,22 @@ get '/favorites' do
   render_favorites ENV["MIXCLOUD_DEFAULT_USERNAME"]
 end
 
+get '/hot' do
+  render_cloudcasts :hot
+end
+
+get '/popular' do
+  render_cloudcasts :popular
+end
+
+get '/new' do
+  render_cloudcasts :new
+end
+
+get '/tag/:tag' do
+  render_tag params[:tag]
+end
+
 get '/cloudcast' do
   @cloudcast = JSON.parse(open("http://api.mixcloud.com#{params["key"]}").read)
   @cloudcast["oembed"] = JSON.parse(open("http://www.mixcloud.com/oembed/?url=#{@cloudcast['url']}").read)["html"]
@@ -72,7 +88,28 @@ end
 def render_favorites(username)
   json = JSON.parse(open("http://api.mixcloud.com/#{username}/favorites/").read)
   #json = JSON.parse(File.read("spec/fixtures/favorites.json"))
-  @favorites = json["data"]
+  @cloudcasts = json["data"]
   @name = json["name"]
+  @nav = :favorites
+  haml :index
+end
+
+def render_cloudcasts(type)
+  api_url = "http://api.mixcloud.com/#{type}/"
+  api_url = "http://api.mixcloud.com/popular/hot/" if type == :hot
+
+  json = JSON.parse(open(api_url).read)
+  @cloudcasts = json["data"]
+  @name = type.to_s
+  @nav = type
+  haml :index
+end
+
+def render_tag(tag)
+  api_url = "http://api.mixcloud.com/search/?tag=#{tag}&type=cloudcast&q=#{tag}"
+
+  json = JSON.parse(open(api_url).read)
+  @cloudcasts = json["data"]
+  @name = tag.to_s
   haml :index
 end

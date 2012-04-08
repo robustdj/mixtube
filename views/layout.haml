@@ -36,12 +36,14 @@
           %h1
             %a{:href => '/'} Mixtube 
         %ul.nav
-          %li
-            %a{:href => '#'} HOT
-          %li
-            %a{:href => '#'} POPULAR
-          %li.current
-            %a{:href => '#'} FAVORITES
+          %li{:class => "#{'current' if @nav==:new}"}
+            %a{:href => '/new'} NEW
+          %li{:class => "#{'current' if @nav==:hot}"}
+            %a{:href => '/hot'} HOT
+          %li{:class => "#{'current' if @nav==:popular}"}
+            %a{:href => '/popular'} POPULAR
+          %li{:class => "#{'current' if @nav==:favorites}"}
+            %a{:href => '/favorites'} FAVORITES
         .window
           .record
         = yield

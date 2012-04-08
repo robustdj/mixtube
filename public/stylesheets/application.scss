@@ -47,7 +47,7 @@ a {
 
   .nav {
     float: right;
-    width: 240px;
+    width: 300px;
     height: 50px;
     padding: 10px 0 10px 10px;
     margin: 15px 0;
@@ -281,7 +281,19 @@ h3 {
     vertical-align:top;
     width: 300px;
     margin-left: 0;
+
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
+
+  .tracklistHeader {
+    width: 650px;
+    margin-left: 0;
+  }
+
   .tracklist {
     display: inline-block;
     height: 300px;

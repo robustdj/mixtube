@@ -58,9 +58,13 @@
 
 #cloudcast.row
   .stream.span3
+    .row
+      %h3 Stream
     =@cloudcast["oembed"]
     =haml :"_tags", :layout => false, :locals => { :tags => @cloudcast['tags'] }
 
+  .row.span8.tracklistHeader
+    %h3 Tracklist
   .tracklist.span8
     %table.table.table-striped.table-condensed
       -@cloudcast["sections"].each_with_index do |section, index|
